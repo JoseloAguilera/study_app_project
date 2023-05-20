@@ -7,19 +7,19 @@ const listar = async function (req, res) {
         console.log("topics", topics);
         if (topics) {
             res.json({
-                succes: true,
+                success: true,
                 topicos: topics
             });
         } else {
             res.json({
-                succes: true,
+                success: true,
                 topicos: []
             });
         }
     } catch (error) {
         console.log(error);
         res.json({
-            succes: false,
+            success: false,
             error: error.message
         });
     }
@@ -32,19 +32,19 @@ const buscarPorCodigo = async function (req, res) {
         const topicModelResult = await TopicService.buscarPorCodigo(req.params.id, req.body.topic);
         if (topicModelResult) {
             res.json({
-                succes: true,
+                success: true,
                 topic: topicModelResult
             });
         } else {
             res.json({
-                succes: true,
+                success: true,
                 topico: null
             });
         }
     } catch (error) {
         console.log(error);
         res.json({
-            succes: false,
+            success: false,
             error: error.message
         });
     }
@@ -60,14 +60,14 @@ const actualizar = async function (req, res) {
                                                         req.body.color, req.body.owner_user_id);
         
         res.json({
-            succes: true,
+            success: true,
             topico: topicoRetorno
         });
         
     } catch (error) {
         console.log(error);
         res.json({
-            succes: false,
+            success: false,
             error: error.message
         });
     }
@@ -80,12 +80,12 @@ const eliminar = async function (req, res) {
         //TopicModel.destroy(req.params.id);
         await TopicService.eliminar(req.params.id);
         res.json({
-            succes: true,
+            success: true,
         });
     } catch (error) {
         console.log(error);
         res.json({
-            succes: false,
+            success: false,
             error: error.message
         });
     }

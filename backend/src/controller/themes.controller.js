@@ -7,19 +7,19 @@ const listar = async function (req, res) {
         console.log("themes", themes);
         if (themes) {
             res.json({
-                succes: true,
+                success: true,
                 temas: themes
             });
         } else {
             res.json({
-                succes: true,
+                success: true,
                 temas: []
             });
         }
     } catch (error) {
         console.log(error);
         res.json({
-            succes: false,
+            success: false,
             error: error.message
         });
     }
@@ -31,19 +31,19 @@ const buscarPorCodigo = async function (req, res) {
         const themeModelResult = await ThemeService.buscarPorCodigo(req.params.id);
         if (themeModelResult) {
             res.json({
-                succes: true,
+                success: true,
                 tema: themeModelResult
             });
         } else {
             res.json({
-                succes: true,
+                success: true,
                 tema: null
             });
         }
     } catch (error) {
         console.log(error);
         res.json({
-            succes: false,
+            success: false,
             error: error.message
         });
     }
@@ -58,13 +58,13 @@ const actualizar = async function (req, res) {
                                                     req.body.description, req.body.keywords, 
                                                     req.body.owner_user_id);
         res.json({
-            succes: true,
+            success: true,
             tema: temaRetorno
         });
     } catch (error) {
         console.log(error);
         res.json({
-            succes: false,
+            success: false,
             error: error.messages
         });
     }
@@ -78,12 +78,12 @@ const eliminar = async function (req, res) {
         const themes = await ThemeService.eliminar(req.params.id);
         console.log("tema eliminado");
         res.json({
-            succes: true
+            success: true
         });
     } catch (error) {
         console.log(error);
         res.json({
-            succes: false,
+            success: false,
             error: error.message
         });
     }

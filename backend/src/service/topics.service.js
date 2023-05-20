@@ -23,7 +23,7 @@ const buscarPorCodigo = async function (id) {
     console.log("Consultar topico");
 
     try {
-        const topicModelResult = await TopicModel.findByPk(req.params.id);
+        const topicModelResult = await TopicModel.findByPk(id);
         if (topicModelResult) {
             return topicModelResult;
         } else {
@@ -46,7 +46,7 @@ const actualizar = async function (id, create_date, name, topic_id, order, prior
             topicModelResult = await TopicModel.findByPk(id);
         }
         if (topicModelResult) {
-            topicoRetorno = await TopicModel.update({data}, { where: { id: id } });
+            topicoRetorno = await TopicModel.update(data, { where: { id: id } });
             topicoRetorno = data;
         } else {
             topicoRetorno = await TopicModel.create(data);

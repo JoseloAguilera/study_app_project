@@ -7,14 +7,14 @@ import { DataService, Message } from '../services/data.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-list-topics',
+  templateUrl: 'list-topics.page.html',
+  styleUrls: ['list-topics.page.scss'],
 })
-export class HomePage implements OnInit{
+export class ListTopicsPage implements OnInit{
   private data = inject(DataService);
 
-  usuarios : any = [];
+  topics : any = [];
   result : string | undefined;
 
   constructor( private toastController: ToastController,
@@ -38,24 +38,25 @@ export class HomePage implements OnInit{
     if (!token){
       this.router.navigate(["/login"]);
     }
-    this.getUsers();
+    this.getTopics();
   }
 
   ngOnInit(): void {
     //this.getUsers();
   }
 
-  getUsers () {
+  getTopics () {
     let token =localStorage.getItem('token');
     let config = {
       headers : {
         "Authorization": token
       }
     }
-    axios.get("http://localhost:4000/users/list", config)
+    axios.get("http://localhost:4000/topics/list", config)
     .then( result => {
+      //console.log(result);
       if (result.data.success == true) {
-        this.usuarios = result.data.usuarios;
+        this.topics = result.data.topicos;
       } else {
         console.log(result.data.error);
         this.presentToats (result.data.error );

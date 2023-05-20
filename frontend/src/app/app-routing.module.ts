@@ -23,6 +23,18 @@ const routes: Routes = [
     loadChildren: () => import('./list-themes/list-themes.module').then( m => m.ListThemesPageModule)
   },
   {
+    path: 'list-topics',
+    loadChildren: () => import('./list-topics/list-topics.module').then( m => m.ListTopicsPageModule)
+  },
+  {
+    path: 'edit-topic/:id',
+    loadChildren: () => import('./edit-topic/edit-topic.module').then( m => m.EditTopicPageModule)
+  },
+  {
+    path: 'view-topic/:id',
+    loadChildren: () => import('./view-topic/view-topic.module').then( m => m.ViewTopicPageModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
